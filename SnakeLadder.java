@@ -2,13 +2,13 @@ package com.bridgelabs.master;
 
 import com.bridgelabs.usecase2.RollingDice;
 import com.bridgelabs.usecase3.CheckOption;
+import com.bridgelabs.usecase7.PlayerTurn;
 
 public class SnakeLadder {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
-		Player();
-		report();
+		twoPlayers();
 	}
 
 	/*
@@ -167,6 +167,29 @@ public class SnakeLadder {
 		System.out.println("Number of times the dice was played to win the game: " + count);
 
 		return count;
+	}
+
+	public static void twoPlayers() {
+		int position1 = 0;
+		int position2 = 0;
+		int count = 0;
+
+		while (position1 < 100 && position2 < 100) {
+
+			position1 = PlayerTurn.playerTurn(position1, "Player 1");
+
+			if (position1 < 100)
+
+				position2 = PlayerTurn.playerTurn(position2, "Player 2");
+
+			count++;
+		}
+		System.out.println("Number of times the dice was played to win the game: " + count);
+		if (position1 == 100) {
+			System.out.println("Player 1 won");
+		} else {
+			System.out.println("Player 2 won");
+		}
 	}
 
 }
