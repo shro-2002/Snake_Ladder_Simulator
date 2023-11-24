@@ -169,6 +169,15 @@ public class SnakeLadder {
 		return count;
 	}
 
+	/*
+	 * @params: void
+	 * 
+	 * @return: void
+	 * 
+	 * @description: UC-7: Play the game with 2 players In this case if a Player
+	 * gets a Ladder then plays again.Finally report which UC 7 Player won the game
+	 */
+
 	public static void twoPlayers() {
 		int position1 = 0;
 		int position2 = 0;
