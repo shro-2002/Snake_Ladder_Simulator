@@ -32,4 +32,19 @@ public class SnakeLadder {
 		int die = (int) (Math.random() * 6) + 1;
 		return die;
 	}
+
+	// UC-3: Player then checks for a option
+
+	/*
+	 * @params: void
+	 * 
+	 * @return: int
+	 * 
+	 * @description: UC-3: Player then checks for a option
+	 */
+	public static int checkOption() {
+		int option = (int) (Math.random() * 3);
+
+		return option;
+	}
 }
