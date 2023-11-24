@@ -84,4 +84,45 @@ public class SnakeLadder {
 			System.out.println("Player is at position: " + position);
 		}
 	}
+
+	// UC-5: Ensure the player gets to exact winning position 100
+
+	/*
+	 * @params: void
+	 * 
+	 * @return: int
+	 * 
+	 * @description: UC-5: Ensure the player gets to exact winning position 100
+	 */
+
+	public static int exactWin(int position) {
+
+		while (position < 100) {
+			int die = RollingDice.rollDie();
+			System.out.println("Die rolled: " + die);
+			int option = CheckOption.checkOption();
+			switch (option) {
+			case 0:
+				System.out.println("No Play");
+				break;
+			case 1:
+				System.out.println("Ladder");
+				if (position + die <= 100) {
+					position += die;
+				}
+				break;
+			case 2:
+				System.out.println("Snake");
+				position -= die;
+				break;
+			}
+			if (position < 0) {
+				position = 0;
+			}
+			System.out.println("Player is at position: " + position);
+
+		}
+		return position;
+	}
+
 }
