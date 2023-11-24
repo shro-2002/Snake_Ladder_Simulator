@@ -1,11 +1,14 @@
 package com.bridgelabs.master;
 
+import com.bridgelabs.usecase2.RollingDice;
+import com.bridgelabs.usecase3.CheckOption;
+
 public class SnakeLadder {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
 		Player();
-		System.out.println(rollDie());
+		repeatTillWin();
 	}
 
 	/*
@@ -46,5 +49,39 @@ public class SnakeLadder {
 		int option = (int) (Math.random() * 3);
 
 		return option;
+	}
+
+	// UC-4: Repeat till the Player reaches the winning position 100
+	/*
+	 * @params: void
+	 * 
+	 * @return: void
+	 * 
+	 * @description:UC-4: Repeat till the Player reaches the winning position 100
+	 */
+	public static void repeatTillWin() {
+		int position = 0;
+		while (position < 100) {
+			int die = RollingDice.rollDie();
+			System.out.println("Die rolled: " + die);
+			int option = CheckOption.checkOption();
+			switch (option) {
+			case 0:
+				System.out.println("No Play");
+				break;
+			case 1:
+				System.out.println("Ladder");
+				position += die;
+				break;
+			case 2:
+				System.out.println("Snake");
+				position -= die;
+				break;
+			}
+			if (position < 0) {
+				position = 0;
+			}
+			System.out.println("Player is at position: " + position);
+		}
 	}
 }
