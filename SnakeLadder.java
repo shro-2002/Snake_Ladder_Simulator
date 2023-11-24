@@ -8,7 +8,7 @@ public class SnakeLadder {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
 		Player();
-		repeatTillWin();
+		report();
 	}
 
 	/*
@@ -123,6 +123,50 @@ public class SnakeLadder {
 
 		}
 		return position;
+	}
+
+	// UC-6: Report the number of times the dice was played to win the game and also
+	// the position after every die role
+
+	/*
+	 * @params: void
+	 * 
+	 * @return: int
+	 * 
+	 * @description: UC-6: Report the number of times the dice was played to win the
+	 * game and also the position after every die role
+	 */
+	public static int report() {
+		int position = 0;
+		int count = 0;
+		while (position < 100) {
+			int die = RollingDice.rollDie();
+			System.out.println("Die rolled: " + die);
+			int option = CheckOption.checkOption();
+			switch (option) {
+			case 0:
+				System.out.println("No Play");
+				break;
+			case 1:
+				System.out.println("Ladder");
+				if (position + die <= 100) {
+					position += die;
+				}
+				break;
+			case 2:
+				System.out.println("Snake");
+				position -= die;
+				break;
+			}
+			if (position < 0) {
+				position = 0;
+			}
+			System.out.println("Player is at position: " + position);
+			count++;
+		}
+		System.out.println("Number of times the dice was played to win the game: " + count);
+
+		return count;
 	}
 
 }
